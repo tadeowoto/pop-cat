@@ -1,34 +1,30 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import catClosed from './assets/catClosed.png';
+import catOpen from './assets/catOpen.png';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const cambiarBoca = () => {
+    setBocaAbierta(!bocaAbierta)
+  }
+
+  const [cuenta, setCuenta] = useState(0) //la cuenta empieza en cero
+  const [bocaAbierta, setBocaAbierta] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main className='mainComponent'>
+      <h1 className='mainTitle'>POPCAT</h1>
+      <img 
+        src={bocaAbierta ? catOpen : catClosed}  
+        alt="Gato animado" 
+        onClick={cambiarBoca} 
+        style={{ cursor: 'pointer', width: '200px' }}
+        className='mainImg'  
+      />
+      <button onClick={() => setCuenta(cuenta + 1)} className='mainButton'>Clicks: {cuenta} </button>
+    </main>
   )
 }
 
